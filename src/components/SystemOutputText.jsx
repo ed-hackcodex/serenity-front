@@ -18,7 +18,7 @@ export default function SystemOutputText() {
     useEffect(() => {
         timer = setInterval(() => {
             typeWriter()
-        }, 150)
+        }, 200)
     }, [])
     return (
         <Typography variant='h3' component='div' fontFamily='karla'>
