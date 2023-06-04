@@ -7,6 +7,8 @@ import SystemOutputText from '../components/SystemOutputText';
 import SystemOutputOnlyAudio from '../components/SystemOutputOnlyAudio';
 import QuestionnairesService from '../services/Questionnaires';
 
+// import Dictaphone from '../components/DictaphoneExample';
+
 export default function Home() {
     useEffect(() => {
         async function getQuestionnaires() {
@@ -37,6 +39,7 @@ export default function Home() {
             <Container sx={{paddingTop: '8vh'}}>
                 { showResponseInText ? <SystemOutputText /> : <SystemOutputOnlyAudio />}
             </Container>
+            {/* <Dictaphone /> */}
             <Box bottom='0' position='absolute' width='100%'>
                 { showButtonStack ? <ButtonStack handleButtonStack={handleButtonStack} handleShowResponseInText={handleShowResponseInText}/> : <TextInputField />}
             </Box>
