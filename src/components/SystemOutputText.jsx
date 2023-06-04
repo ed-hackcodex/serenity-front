@@ -1,28 +1,31 @@
-import { Typography} from '@mui/material';
-import { useEffect, useState } from 'react';
+import { Typography } from '@mui/material';
+import { useCallback, useEffect, useRef } from 'react';
 
 let timer;
-const welcomeMsg = 'Hi User, my name is Karla, your mental health companion. Do you feel like talking or just messaging?';
-const welcomeMsgWords = welcomeMsg.split(' ');
-let wordIdx = 0;
-export default function SystemOutputText() {
-    const [text, setText] = useState('');
-    const typeWriter = () => {
-        if (wordIdx < welcomeMsgWords.length) {
-            console.log(welcomeMsgWords[wordIdx])
-            setText(value => value + ' ' + welcomeMsgWords[wordIdx])
-            wordIdx++;
+let letterIndex = 0;
+export default function SystemOutputText({ text }) {
+    const label = useRef()
+
+    const typeWriter = useCallback(() => {
+        if (letterIndex < text.length) {
+            label.current.innerHTML += text[letterIndex]
+            letterIndex++;
         }
-        clearInterval(timer);
-    }
+    }, [text])
+
     useEffect(() => {
         timer = setInterval(() => {
             typeWriter()
-        }, 200)
-    }, [])
+        }, 40)
+        return () => clearInterval(timer)
+    }, [typeWriter])
+
+    useEffect(() => {
+        label.current.innerHTML = ''
+        letterIndex = 0
+    }, [text])
+
     return (
-        <Typography variant='h3' component='div' fontFamily='karla'>
-            {text}
-        </Typography>
+        <Typography variant='h4' fontFamily='karla' ref={label} onClick={() => clearInterval(timer)} />
     )
 }
