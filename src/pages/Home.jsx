@@ -1,9 +1,9 @@
-import { AppBar, Container, Toolbar, Box, Button} from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { useEffect } from 'react'
-
-import QuestionnairesService from '../services/Questionnaires'
+import {Container, Typography, Box} from '@mui/material';
+import TopAppBar from '../components/TopAppBar';
+import { useEffect, useState } from 'react'
+import ButtonStack from '../components/ButtonStack';
+import TextInputField from '../components/TextInputField';
+import QuestionnairesService from '../services/Questionnaires';
 
 export default function Home() {
     useEffect(() => {
@@ -16,24 +16,19 @@ export default function Home() {
             }
         }
         getQuestionnaires()
-    }, []) 
+    }, [])
+
+    const [showButtonStack, setShowButtonStack] = useState(true);
+    const handleButtonStack = () => {setShowButtonStack(false)};
 
     return (
         <>
-            <AppBar color="transparent" position='static'>
-                <Toolbar>
-                    <IconButton size='large'>
-                        <SettingsIcon />
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-            <Container>
-                <h1>Hi User!</h1>
+            <TopAppBar />
+            <Container sx={{paddingTop: '8vh'}}>
+                <Typography variant='h2' component='div'>Hi there!</Typography>
             </Container>
-            <Box>
-                <Button size='large' variant='outlined'>Just Chat</Button>
-                <Button size='large' variant='outlined'>Just Talk</Button>
-                <Button size='large' variant='outlined'>Both</Button>
+            <Box bottom='0' position='absolute' width='100%'>
+                { showButtonStack ? <ButtonStack handleButtonStack={handleButtonStack}/> : <TextInputField />};
             </Box>
         </>
     );
