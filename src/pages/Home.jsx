@@ -1,8 +1,10 @@
-import {Container, Typography, Box} from '@mui/material';
+import {Container, Box} from '@mui/material';
 import TopAppBar from '../components/TopAppBar';
 import { useEffect, useState } from 'react'
 import ButtonStack from '../components/ButtonStack';
 import TextInputField from '../components/TextInputField';
+import SystemOutputText from '../components/SystemOutputText';
+import SystemOutputOnlyAudio from '../components/SystemOutputOnlyAudio';
 import QuestionnairesService from '../services/Questionnaires';
 
 export default function Home() {
@@ -19,16 +21,24 @@ export default function Home() {
     }, [])
 
     const [showButtonStack, setShowButtonStack] = useState(true);
-    const handleButtonStack = () => {setShowButtonStack(false)};
+    const [showResponseInText, setShowResponseInText] = useState(true);
+    
+    const handleButtonStack = () => {
+        setShowButtonStack(false)
+    };
+    const handleShowResponseInText = () => {
+        setShowResponseInText(false);
+        setShowButtonStack(false);
+    } 
 
     return (
         <>
             <TopAppBar />
             <Container sx={{paddingTop: '8vh'}}>
-                <Typography variant='h2' component='div'>Hi there!</Typography>
+                { showResponseInText ? <SystemOutputText /> : <SystemOutputOnlyAudio />}
             </Container>
             <Box bottom='0' position='absolute' width='100%'>
-                { showButtonStack ? <ButtonStack handleButtonStack={handleButtonStack}/> : <TextInputField />};
+                { showButtonStack ? <ButtonStack handleButtonStack={handleButtonStack} handleShowResponseInText={handleShowResponseInText}/> : <TextInputField />}
             </Box>
         </>
     );
