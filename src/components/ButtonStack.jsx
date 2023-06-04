@@ -1,14 +1,19 @@
-import {Stack, Button} from '@mui/material';
-// import { useState } from 'react';
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+
+const CustomButton = styled(Button) ({
+    color: 'white',
+    borderColor: 'white',
+    borderRadius: '50px'
+})
 
 export default function ButtonStack(prop) {
-    // const [onlyChat, setOnlyChat] = useState(true);
-    // const [onlyAudio, setOnlyAudio] = useState(false);
     return (
-        <Stack spacing={1} padding={2} color='inherit'>
-            <Button size='large' variant='outlined' onClick={prop.handleButtonStack}>Just Chat</Button>
-            <Button size='large' variant='outlined' onClick={prop.handleShowResponseInText}>Just Talk</Button>
-            <Button size='large' variant='outlined' onClick={prop.handleButtonStack}>Both</Button>
+        <Stack spacing={1} padding={2}>
+            <CustomButton size='large' variant='outlined' onClick={prop.handleButtonStack}>Just Chat</CustomButton>
+            <CustomButton  size='large' variant='outlined' onClick={prop.handleShowResponseInText}>Just Talk</CustomButton>
+            <CustomButton  size='large' variant='outlined' onClick={prop.handleButtonStack}>Both</CustomButton>
         </Stack>
     );
 }
