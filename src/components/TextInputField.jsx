@@ -1,36 +1,31 @@
-import { Box, TextField, InputAdornment, IconButton} from "@mui/material";
-import MicIcon from '@mui/icons-material/Mic';
-import SendIcon from '@mui/icons-material/Send';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { useState } from 'react'
+import { Box, TextField, InputAdornment, IconButton } from '@mui/material'
+import MicIcon from '@mui/icons-material/Mic'
+import SendIcon from '@mui/icons-material/Send'
 
-const TextInputField = () => {
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition();
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser does not support speech recognition.</span>;
+const TextInputField = ({ onSend }) => {
+  const [value, setValue] = useState('')
+  const handleSend = () => {
+    onSend({ role: 'user', content: value })
   }
   return (
-      <Box component='form' padding={2} sx={{ display: "flex", alignItems: "center"}}>
-          <TextField 
-            sx={{flexGrow: 1}}
-            value={{transcript}}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SendIcon />
-                </InputAdornment>
-              ),
-            }}>
-          </TextField>
-          <IconButton onClick={console.log("Clicked!!!")} size="large">
-            <MicIcon />
-          </IconButton>
-      </Box>
+    <Box padding={2} sx={{ display: "flex", alignItems: "center" }}>
+      <TextField
+        sx={{ flexGrow: 1 }}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end" onClick={handleSend}>
+              <SendIcon />
+            </InputAdornment>
+          ),
+        }}>
+      </TextField>
+      <IconButton onClick={() => console.log("Clicked!!!")} size="large">
+        <MicIcon />
+      </IconButton>
+    </Box>
   );
 }
 
