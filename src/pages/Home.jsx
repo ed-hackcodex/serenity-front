@@ -24,11 +24,11 @@ export default function Home() {
     const [showResponseInText, setShowResponseInText] = useState(true);
     
     const handleButtonStack = () => {
-        setShowButtonStack(false)
+        setShowButtonStack(false);  
     };
     const handleShowResponseInText = () => {
         setShowResponseInText(false);
-        setShowButtonStack(false);
+        handleButtonStack();
     } 
 
     return (

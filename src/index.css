@@ -6,6 +6,15 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #36343B;
+  /* transition: background 2s ease; */
+
+  /* box-shadow:0 200px 100px -100px rgb(112, 112, 218) inset, 0 0 5px black; */
+  /* background-image: linear-gradient(to bottom right, #3d2d63, #7861ad); */
+  /* transition: background 10s ease-in; */
+  /* &:{
+    background:rgb(112, 112, 218);
+    box-shadow:0 200px 100px -100px #3d2d63 inset, 0 0 5px black;  
+  } */
 
   /* font-synthesis: none;
   text-rendering: optimizeLegibility;

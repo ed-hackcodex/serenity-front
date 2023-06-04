@@ -11,9 +11,9 @@ const CustomButton = styled(Button) ({
 export default function ButtonStack(prop) {
     return (
         <Stack spacing={1} padding={2}>
-            <CustomButton size='large' variant='outlined' onClick={prop.handleButtonStack}>Just Chat</CustomButton>
-            <CustomButton  size='large' variant='outlined' onClick={prop.handleShowResponseInText}>Just Talk</CustomButton>
-            <CustomButton  size='large' variant='outlined' onClick={prop.handleButtonStack}>Both</CustomButton>
+            <CustomButton size='large' variant='outlined' onClick={prop.handleButtonStack}>Chat</CustomButton>
+            <CustomButton  size='large' variant='outlined' onClick={prop.handleShowResponseInText}>Talk</CustomButton>
+            {/* <CustomButton  size='large' variant='outlined' onClick={prop.handleButtonStack}>Both</CustomButton> */}
         </Stack>
     );
 }
