@@ -1,19 +1,19 @@
 import { createContext, useEffect, useState } from 'react'
 
-import QuestionnairesService from '../services/Questionnaires'
+import ConversationService from '../services/Conversation'
 
 const CommonDataContext = createContext({})
 
 function CommonDataProvider({ children }) {
     const [data, setData] = useState({
-        questionnaires: null
+        firstInteraction: null
     })
 
     useEffect(() => {
         async function getQuestionnaires() {
             try {
-                const questionnaires = await QuestionnairesService.get()
-                setData(values => ({ ...values, questionnaires }))
+                const conversationResponse = await ConversationService.get()
+                setData(values => ({ ...values, firstInteraction: conversationResponse.data[conversationResponse.data.length - 1] }))
             } catch (error) {
                 console.warn('Error: Get questionnaires data: ', error)
             }

@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'regenerator-runtime/runtime'
 
@@ -9,11 +8,9 @@ import './index.css'
 import { CommonDataProvider } from './context/CommonDataContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <CommonDataProvider>
       <UserProvider>
         <App />
       </UserProvider>
     </CommonDataProvider>
-  </React.StrictMode>,
 )
