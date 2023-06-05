@@ -1,7 +1,7 @@
 :root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-image: linear-gradient(to bottom right, #36343B, #36343B);
+  background-image: linear-gradient(to bottom right, #6f59a6, #36343B);
   transition: background-image 5s ease;
 }
 
