@@ -31,6 +31,8 @@ export default function Home() {
     }
 
     const handleButtonStack = () => {
+        // document.documentElement.style.setProperty("background-image", "linear-gradient(to right, red , yellow)");
+        // document.documentElement.style.setProperty("transition", "linear-gradient(to right, red , yellow)");
         setShowButtonStack(false)
         handleGetConversation()
     }

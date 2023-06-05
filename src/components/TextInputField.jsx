@@ -9,9 +9,9 @@ const TextInputField = ({ onSend }) => {
     onSend({ role: 'user', content: value })
   }
   return (
-    <Box padding={2} sx={{ display: "flex", alignItems: "center" }}>
+    <Box padding={2} sx={{ display: "flex", alignItems: "center"}}>
       <TextField
-        sx={{ flexGrow: 1 }}
+        sx={{flexGrow: 1}}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         InputProps={{
@@ -22,7 +22,7 @@ const TextInputField = ({ onSend }) => {
           ),
         }}>
       </TextField>
-      <IconButton onClick={() => console.log("Clicked!!!")} size="large">
+      <IconButton onClick={() => console.log("Clicked!!!")} size="large" color='inherit'>
         <MicIcon />
       </IconButton>
     </Box>
