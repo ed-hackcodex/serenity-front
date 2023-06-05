@@ -26,28 +26,28 @@ const TextInputField = ({ onSend }) => {
     onSend({ role: 'user', content: value })
     setValue('')
   }
-  
+
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn&apos;t support speech recognition.</span>;
   }
 
   return (
-    <Box padding={2} sx={{ display: "flex", alignItems: "center"}}>
+    <Box padding={2} sx={{ display: "flex", alignItems: "center" }}>
       <TextField
         autoComplete="off"
-        sx={{ flexGrow: 1 }}
+        sx={{ flexGrow: 1, '& .MuiInputBase-input': { color: 'white' } }}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         disabled={listening}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end" onClick={handleSend}>
-              <SendIcon />
+              <SendIcon sx={{ color: 'white' }} />
             </InputAdornment>
           ),
         }}>
       </TextField>
-      <IconButton onClick={() => SpeechRecognition.startListening({ language: 'en-US' })} size="large">
+      <IconButton onClick={() => SpeechRecognition.startListening({ language: 'en-US' })} size="large" color="inherit">
         <MicIcon />
       </IconButton>
     </Box>

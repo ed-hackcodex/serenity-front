@@ -16,7 +16,7 @@ export default function SystemOutputText({ text }) {
     useEffect(() => {
         timer = setInterval(() => {
             typeWriter()
-        }, 40)
+        }, 20)
         return () => clearInterval(timer)
     }, [typeWriter])
 
@@ -26,6 +26,6 @@ export default function SystemOutputText({ text }) {
     }, [text])
 
     return (
-        <Typography variant='h4' fontFamily='karla' ref={label} onClick={() => clearInterval(timer)} />
+        <Typography variant='h5' fontFamily='karla' ref={label} onClick={() => clearInterval(timer)} />
     )
 }
